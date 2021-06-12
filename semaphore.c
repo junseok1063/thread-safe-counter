@@ -10,11 +10,11 @@
 
 union semun{
     int val;
-    strucy semid_ds *buf;
+    struct semid_ds *buf;
     ushort *array;
 };
 
-#define PATH "home/kaai/"
+#define PATH "home/junseok/"
 typedef struct __counter_t {
     int value;
     int semid;
@@ -38,12 +38,12 @@ void increment(counter_t *c) {
     s.sem_num=0;
     s.sem_op=-1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)
+    semop(c->semid,&s,1);
     c->value++;
     s.sem_num=0;
     s.sem_op=1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)
+    semop(c->semid,&s,1);
 }
 
 void decrement(counter_t *c) {
@@ -51,12 +51,12 @@ void decrement(counter_t *c) {
     s.sem_num=0;
     s.sem_op=-1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)
+    semop(c->semid,&s,1);
     c->value--;
     s.sem_num=0;
     s.sem_op=1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)
+    semop(c->semid,&s,1);
 }
 
 int get(counter_t *c) {
@@ -64,11 +64,12 @@ int get(counter_t *c) {
     s.sem_num=0;
     s.sem_op=-1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)int rc = c->value;
+    semop(c->semid,&s,1);
+    int rc = c->value;
     s.sem_num=0;
     s.sem_op=1;
     s.sem_flg=0;
-    semop(c->semid,&s,1)
+    semop(c->semid,&s,1);
     return rc;
 }
 
@@ -89,7 +90,7 @@ int main(int argc, char *argv[])
 {                    
     double time_spent=0.0;
     loop_cnt = atoi(argv[1]);
-    clock_t begint = clock();
+    clock_t begin = clock();
     
     init(&counter);
 
