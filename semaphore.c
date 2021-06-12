@@ -18,7 +18,7 @@ union semun{
 typedef struct __counter_t {
     int value;
     int semid;
-    union semum arg;
+    union semun arg;
 } counter_t;
 
 unsigned int loop_cnt;
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
     
     clock_t end = clock();
     time_spent += (double)(end-begin) / CLOCKS_PER_SEC;
-    printf("Run Time: %fsecond", time_spent)
+    printf("Run Time: %fsecond", time_spent);
 
     return 0;
 }
