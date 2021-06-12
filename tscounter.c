@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 {                    
     double time_spent=0.0;
     loop_cnt = atoi(argv[1]);
-    clock_t begint = clock();
+    clock_t begin = clock();
     
     init(&counter);
 
@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     
     clock_t end = clock();
     time_spent += (double)(end-begin) / CLOCKS_PER_SEC;
-    printf("Run Time: %fsecond", time_spent)
+    printf("Run Time: %fsecond", time_spent);
 
     return 0;
 }
