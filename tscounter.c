@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <time.h>
 
 typedef struct __counter_t {
     int value;
@@ -51,8 +52,10 @@ void *mythread(void *arg)
                                                                              
 int main(int argc, char *argv[])
 {                    
+    double time_spent=0.0;
     loop_cnt = atoi(argv[1]);
-
+    clock_t begint = clock();
+    
     init(&counter);
 
     pthread_t p1, p2;
@@ -63,5 +66,10 @@ int main(int argc, char *argv[])
     pthread_join(p1, NULL); 
     pthread_join(p2, NULL); 
     printf("main: done [counter: %d] [should be: %d]\n", get(&counter), loop_cnt * 2);
+    
+    clock_t end = clock();
+    time_spent += (double)(end-begin) / CLOCKS_PER_SEC;
+    printf("Run Time: %fsecond", time_spent)
+
     return 0;
 }
