@@ -11,3 +11,5 @@ Made it at Ubuntu 18.04 and it works at Ubuntu 18.04 and WSL.
 Using Semaphore takes much more time than using Mutex. Almost 30 times longer.
 
 #Reason
+Mutex uses very simple code and it can only determine two state lock or unlock. 
+But Semaphore is more complex and it has more variables so it can determince more state.
